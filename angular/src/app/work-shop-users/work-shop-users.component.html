@@ -1,0 +1,144 @@
+<p>work-shop-users works!</p>
+  <p><button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#createModal" > 
+        <span class="glyphicon glyphicon-plus"></span> create
+      </button>
+    </p>  
+  <!-- Trigger the modal with a button -->
+<div>
+    <div class="form-group">
+        <label for="usr">Filter:</label>
+        <input type="text" class="form-control bord" #filterInput (input)="FilterBy(filterInput)">
+      </div>
+      <table class="table tab table-bordered table-hover ">
+        
+        <thead class="thead-dark">
+        <tr>
+          <th>Name <button type="button" class="btn btn-default btn-sm">
+            <span [class]="NameSortDirec" #NameDirec (click)="changeNameSortDirec(NameDirec)"></span> 
+          </button></th>
+          <th>Age</th>
+          <th>Delete</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of users;index as i">
+          <td>{{item.name}}</td>
+          <td>{{item.age}}</td>
+          <td><button type="button" class="  btn-sm" (click)="DeleteItem(item.id)">
+              <span class="glyphicon glyphicon-trash"></span> 
+            </button>
+          </td>
+          <td>
+              <button type="button" class="  btn-sm" data-toggle="modal" data-target="#myModal" (click)="ShowForEditModal(item)">
+                  <span class="glyphicon glyphicon-edit"></span> 
+                </button>
+                <!-- Trigger the modal with a button -->
+      
+            </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+         <td colspan="2"> Page Size :
+            <select class='select-option'  #mySelect (change)='changePageSize(mySelect.value)'>
+                <option class='option' [value]="1">1</option>
+                <option class='option' [value]="5">5</option>
+                <option class='option' [value]="10">10</option>
+                <option class='option' [value]="15">15</option>
+              </select>
+         </td>
+         <td colspan="2">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item" (click)="previousPage()">
+                    <a class="page-link" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  <!-- <li class="page-item"><a class="page-link" >1</a></li>
+                  <li class="page-item"><a class="page-link" >2</a></li> -->
+                  <li class="page-item" (click)="nextPage()">
+                    <a class="page-link"  aria-label="Next" >
+                      <span aria-hidden="true">&raquo;</span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+         </td>
+        
+        </tr>
+      </tfoot>
+      </table>
+</div>
+
+
+<!-- bootstrap -->
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Employee Data</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label for="usr">Name:</label>
+            <input type="text" class="form-control bord" id="usr" [(ngModel)]="modalName">
+          </div>
+          <div class="form-group">
+              <label for="usr">Age:</label>
+              <input type="text" class="form-control bord" id="usr" [(ngModel)]="modalAge">
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="SaveEditObj()">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="createModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit Employee Data</h4>
+        </div>
+        <div class="modal-body">
+            <form #form="ngForm" (ngSubmit)="createUser(form)">  
+               <br/>  
+               <div class="form-group">  
+                   <input type="text" class="form-control" placeholder="Name" name="username" required ngModel>   
+               </div>  
+               <div class="form-group">  
+                   <input type="text" class="form-control"  placeholder="Age" name="userage" required ngModel>  
+               </div>  
+               <select name="userDpart" ngModel>
+                 <option value="b983a414-2f0b-4b89-a37a-08d71a56ab36">SD</option>
+                 <option value="b17bb83f-993f-44ac-9283-502d8fe1833a">EL</option>
+
+               </select>
+              
+               <br/>  
+               <div class="align-center">  
+                   <button type="submit" class="btn btn-default" id="register" [disabled]="!form.valid" >Register</button>  
+               </div>  
+           </form>  
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+  
+    </div>
+  </div>
