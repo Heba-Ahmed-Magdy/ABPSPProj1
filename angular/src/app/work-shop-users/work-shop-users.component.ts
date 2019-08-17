@@ -3,11 +3,13 @@ import { FormsModule } from '@angular/forms';
 import { workShopUsersService } from './WorkShopUsersService';
 import { Http } from '@angular/http';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
+import { appModuleAnimation } from '@shared/animations/routerTransition';
 
 @Component({
   selector: 'app-work-shop-users',
   templateUrl: './work-shop-users.component.html',
-  styleUrls: ['./work-shop-users.component.css']
+  styleUrls: ['./work-shop-users.component.css'],
+  animations: [appModuleAnimation()]
 })
 export class WorkShopUsersComponent implements OnInit {
 
