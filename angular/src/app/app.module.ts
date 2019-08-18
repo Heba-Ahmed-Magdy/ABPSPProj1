@@ -41,6 +41,7 @@ import { ResetPasswordDialogComponent } from './users/reset-password/reset-passw
 import { WorkShopUsersComponent } from './work-shop-users/work-shop-users.component';
 import { HttpModule } from '@angular/http';
 import { workShopUsersService } from './work-shop-users/WorkShopUsersService';
+import { WorkshopUsers2Component } from './workshop-users2/workshop-users2.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { workShopUsersService } from './work-shop-users/WorkShopUsersService';
     EditUserDialogComponent,
     ChangePasswordComponent,
     ResetPasswordDialogComponent,
-    WorkShopUsersComponent
+    WorkShopUsersComponent,
+    WorkshopUsers2Component
   ],
   imports: [
     CommonModule,

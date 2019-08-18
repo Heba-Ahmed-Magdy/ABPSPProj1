@@ -9,6 +9,7 @@ import { TenantsComponent } from './tenants/tenants.component';
 import { RolesComponent } from 'app/roles/roles.component';
 import { ChangePasswordComponent } from './users/change-password/change-password.component';
 import { WorkShopUsersComponent } from './work-shop-users/work-shop-users.component';
+import { WorkshopUsers2Component } from './workshop-users2/workshop-users2.component';
 
 @NgModule({
     imports: [
@@ -19,6 +20,7 @@ import { WorkShopUsersComponent } from './work-shop-users/work-shop-users.compon
                 children: [
                     { path: 'home', component: HomeComponent,  canActivate: [AppRouteGuard] },
                     { path: 'WorkShopUsers', component: WorkShopUsersComponent,  canActivate: [AppRouteGuard] },
+                    { path: 'WorkShopUsers2', component: WorkshopUsers2Component,  canActivate: [AppRouteGuard] },
                     { path: 'users', component: UsersComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
                     { path: 'roles', component: RolesComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
                     { path: 'tenants', component: TenantsComponent, data: { permission: 'Pages.Tenants' }, canActivate: [AppRouteGuard] },
